@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.10.0
+   
       # https://docs.github.com/en/actions/guides/building-and-testing-python#installing-dependencies
       # ^-- This gives info on installing dependencies with pip
       - name: Install dependencies
@@ -58,4 +59,14 @@ jobs:
           name: DocumentationHTML
           path: docs/_build/html/
           
+      - name: Clone old gh-pages
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          set -x
+          git fetch
+          ( git branch gh-pages remotes/origin/gh-pages && git clone . --branch=gh-pages _gh-pages/ ) || mkdir _gh-pages
+          rm -rf _gh-pages/.git/
+          mkdir -p _gh-pages/branch/
+      # If a push and default branch, copy build to _gh-pages/ as the "main"
+      # deployment.
           
