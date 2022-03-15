@@ -10,7 +10,7 @@ jobs:
     - name: Commit documentation changes
       run: |
         pip install sphinx
-        pip install sphinx_theme_rtd
+        pip install sphinx_rtd_theme
     - uses: actions/checkout@v1
     - uses: ammaraskar/sphinx-action@master
       with:
