@@ -36,5 +36,11 @@ jobs:
         run: |
           sphinx-apidoc --no-toc --module-first -f -o docs/ src/
           sphinx-build docs public -b dirhtml
+          make html
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: DocumentationHTML
+          path: docs/_build/html/
           
           
