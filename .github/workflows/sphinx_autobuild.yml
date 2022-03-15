@@ -7,9 +7,9 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    -name: Install dependencies
+    - name: Commit documentation changes
       run: |
-        pip install Sphinx
+        pip install sphinx
         pip install sphinx_theme_rtd
     - uses: actions/checkout@v1
     - uses: ammaraskar/sphinx-action@master
