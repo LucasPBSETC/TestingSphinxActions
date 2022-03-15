@@ -34,7 +34,7 @@ jobs:
       # Build
       - name: Build Sphinx docs
         run: |
-          sphinx-apidoc --no-toc --module-first -o docs src
+          sphinx-apidoc --no-toc --module-first -f -o docs/ src/
           sphinx-build docs public -b dirhtml
           
           
